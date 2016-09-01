@@ -1,0 +1,20 @@
+<head>
+  <title>gromby-leads</title>
+</head>
+
+<body>
+  <h1>Welcome to Gromby Leads!</h1>
+
+  {{> login}}
+
+</body>
+
+<template name="login">
+  <button class="login">Login and subscribe</button>
+  <h2>Pages</h2>
+  <ul>
+    {{#each pages}}
+    <li><a href="#" class="subsribetopage"> {{name}} </a></li>
+    {{/each}}
+  </ul>
+</template>

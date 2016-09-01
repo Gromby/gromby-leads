@@ -5,7 +5,17 @@
 <body>
   <h1>Welcome to Gromby Leads!</h1>
 
+  <div style="width:50%; float: left;">
   {{> login}}
+  </div>
+  <div style="width:50%; float: right;">
+    <h2>Current Leads:</h2>
+    <ul>
+      {{#each leads}}
+      <li>{{.}}</li>
+      {{/each}}
+    </ul>
+  </div>
 
 </body>
 

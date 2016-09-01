@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { SubscribedPages } from '../imports/collections.js';
+import { SubscribedPages, GrombyLeads } from '../imports/collections.js';
 
 import './main.html';
 
@@ -16,6 +16,19 @@ window.fbAsyncInit = function() {
 Template.login.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.pages = new ReactiveVar([]);
+});
+
+Template.body.helpers({
+  leads() {
+    var leads = GrombyLeads.find().fetch();
+    return leads.map(function(lead) {
+      var return_value = {};
+      lead.data.field_data.forEach(function(datum){
+        return_value[datum.name] = datum.values.join(' ');
+      });
+      return JSON.stringify(return_value);
+    });
+  }
 });
 
 Template.login.helpers({

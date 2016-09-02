@@ -5,13 +5,15 @@ import { SubscribedPages, GrombyLeads } from '../imports/collections.js';
 
 import './main.html';
 
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1007039122651117',
-    status     : true,
-    xfbml      : true
-  });
-};
+Template.body.onRendered(function helloOnRendered() {
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1007039122651117',
+      status     : true,
+      xfbml      : true
+    });
+  };
+});
 
 Template.login.onCreated(function helloOnCreated() {
   // counter starts at 0

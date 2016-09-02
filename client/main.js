@@ -48,6 +48,7 @@ Template.login.events({
     { access_token: this.access_token }, function(response){
       console.log(response);
       if (!SubscribedPages.findOne({ id: page_data.id })) {
+        alert('Gromby Leads is now subscribed to the lead events of your page.');
         SubscribedPages.insert(page_data);
       }
     });

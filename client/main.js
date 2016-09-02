@@ -23,6 +23,7 @@ Template.body.helpers({
     var leads = GrombyLeads.find().fetch();
     return leads.map(function(lead) {
       var return_value = {};
+      if (!lead.data.field_data) return {};
       lead.data.field_data.forEach(function(datum){
         return_value[datum.name] = datum.values.join(' ');
       });
@@ -44,7 +45,9 @@ Template.login.events({
     FB.api('/' + this.id + '/subscribed_apps', 'post',
     { access_token: this.access_token }, function(response){
       console.log(response);
-      SubscribedPages.insert(page_data);
+      if (!SubscribedPages.findOne({ id: page_data.id })) {
+        SubscribedPages.insert(page_data);
+      }
     });
   },
   'click .login'(event, template) {

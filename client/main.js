@@ -5,7 +5,7 @@ import { SubscribedPages, GrombyLeads } from '../imports/collections.js';
 
 import './main.html';
 
-Template.body.onRendered(function helloOnRendered() {
+Template.login.onRendered(function helloOnRendered() {
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1007039122651117',

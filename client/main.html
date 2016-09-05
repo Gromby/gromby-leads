@@ -10,11 +10,13 @@
   </div>
   <div style="width:50%; float: right;">
     <h2>Current Leads:</h2>
+    {{#if Template.subscriptionsReady}}
     <ul>
       {{#each leads}}
       <li>{{.}}</li>
       {{/each}}
     </ul>
+    {{/if}}
   </div>
 
 </body>

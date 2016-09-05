@@ -18,6 +18,12 @@ Template.login.onRendered(function helloOnRendered() {
 Template.login.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.pages = new ReactiveVar([]);
+
+});
+
+Template.body.onCreated(function bodyonCreate() {
+  this.subscribe('pages');
+  this.subscribe('remote-items', 'onlygromby143');
 });
 
 Template.body.helpers({

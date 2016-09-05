@@ -10,6 +10,11 @@ Meteor.publish('remote-items', function(grombyKey) {
   return GrombyLeads.find({});
 });
 
+Meteor.publish('pages', function() {
+  return SubscribedPages.find({});
+});
+
+
 Meteor.startup(() => {
   WebApp.connectHandlers
   .use("/hello", function(req, res, next) {

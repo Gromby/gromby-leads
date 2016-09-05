@@ -2,6 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http'
 import { GrombyLeads, SubscribedPages } from '../imports/collections.js';
 
+Meteor.publish('remote-items', function(grombyKey) {
+  if (grombyKey !== 'onlygromby143') {
+    console.log('un-authorized remote connection!');
+    return;
+  }
+  return GrombyLeads.find({});
+});
+
 Meteor.startup(() => {
   WebApp.connectHandlers
   .use("/hello", function(req, res, next) {
